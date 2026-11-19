@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Is It Made Of?</title>
+  <meta name="description" content="One falling circle, many sounds. Watch each version alone or in a row, and see whether your answers change.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+
+  <header class="intro">
+    <h1>What Is It Made Of?</h1>
+    <p class="lead">One movement. Many sounds. Seen alone, or one after another.</p>
+    <p>
+      In Week 5 I made a short film: one falling circle shown four times, each time with a different sound.
+      Watching them in a row, each version was heard against the one before it. This page separates them.
+      Watch each version <strong>alone</strong>, or <strong>in a row</strong>, and say what you think the circle is made of each time.
+      The circle never changes; only the sound, and the company it keeps.
+    </p>
+  </header>
+
+  <!-- the stage: one circle, one ground line -->
+  <section class="stage-wrap" aria-label="Animation">
+    <div class="stage">
+      <canvas id="stage" role="img" aria-label="A dark circle falls onto a line and bounces to rest."></canvas>
+      <p id="stage-label" class="stage-label"></p>
+      <p id="stage-hint" class="stage-hint">Choose a way of watching below. Turn your sound on.</p>
+    </div>
+
+    <!-- answer buttons appear after each viewing -->
+    <div id="ask" class="ask" hidden>
+      <p class="ask-q">What is it made of?</p>
+      <div class="choices" id="choices"></div>
+      <button id="replay" class="link">Watch again</button>
+    </div>
+  </section>
+
+  <!-- two ways of watching -->
+  <section class="modes">
+    <div class="tabs" role="tablist" aria-label="Ways of watching">
+      <button role="tab" id="tab-alone" aria-selected="true" aria-controls="panel-alone">Alone</button>
+      <button role="tab" id="tab-row" aria-selected="false" aria-controls="panel-row">In a row</button>
+      <button role="tab" id="tab-answers" aria-selected="false" aria-controls="panel-answers">Your answers</button>
+    </div>
+
+    <div id="panel-alone" role="tabpanel" aria-labelledby="tab-alone" class="panel">
+      <p class="panel-note">Each version on its own, with nothing before or after it. The name stays hidden until you answer.</p>
+      <div id="cards" class="cards"></div>
+    </div>
+
+    <div id="panel-row" role="tabpanel" aria-labelledby="tab-row" class="panel" hidden>
+      <p class="panel-note">The versions play one after another, as in the original film. Answer after each one to continue.</p>
+      <div class="row-buttons">
+        <button id="row-film">Film order (01–04)</button>
+        <button id="row-shuffle">Shuffled (all seven)</button>
+        <button id="row-reverse">Reversed (04–01)</button>
+      </div>
+      <ol id="row-progress" class="row-progress"></ol>
+    </div>
+
+    <div id="panel-answers" role="tabpanel" aria-labelledby="tab-answers" class="panel" hidden>
+      <p class="panel-note">Your answers for each version, alone and in a row. They are saved only in this browser.</p>
+      <div class="table-wrap">
+        <table id="answers-table">
+          <thead><tr><th>Version</th><th>Alone</th><th>In a row</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p id="answers-summary" class="panel-note"></p>
+      <button id="clear-answers" class="link">Clear my answers</button>
+    </div>
+  </section>
+
+  <!-- the versions explained -->
+  <section class="text">
+    <h2>The versions</h2>
+    <div id="version-list" class="version-list"></div>
+  </section>
+
+  <section class="text">
+    <h2>The sound–image link</h2>
+    <p>
+      Two ideas from Michel Chion's <em>Audio-Vision</em> helped me think about these versions, alongside Miguel Mera's lecture on sound and image.
+      The first is <strong>synchresis</strong>: when a sound and an image happen at the same moment, we weld them into a single event, even when the
+      sound was made by something else entirely. A sine tone and a drawn circle become one falling object. The second is <strong>added value</strong>:
+      a sound gives an image qualities the image does not show, such as weight, hardness or material, and we experience those qualities as if they
+      came from the image itself.
+    </p>
+    <p>
+      Each version tests one of these ideas. The dry knock, the ring, the thud and the glass test added value: the same circle seems hollow, metallic,
+      heavy or fragile. The late ring and the early knock test synchresis: how far a sound can drift from the moment of contact before it stops
+      belonging to the circle and becomes an echo, a mistake, or a second event.
+    </p>
+  </section>
+
+  <section class="text">
+    <h2>Alone or together</h2>
+    <p>
+      In the original film the order did part of the work. The silent version came first and made me imagine a sound. The ring came before the late
+      ring, so when the late ring arrived I already expected a sound at the moment of contact, and the delay could feel like an echo. Seen alone, the
+      same delay has nothing to be compared with. It might read as a mistake, or not be noticed at all.
+    </p>
+    <p>
+      This is the point Ryan raised: four versions in a row create an impression that the same versions alone, or in other groupings, would not
+      necessarily create. A sequence is not a neutral container. Each version becomes the context for the next one, through expectation and memory.
+      This page makes that difference something you can test on yourself. The <em>Your answers</em> tab puts your answer for each version alone beside
+      your answer in a row, so any change caused by the grouping becomes visible.
+    </p>
+    <p>
+      There is a limit to this test. Once you have heard a version, you cannot hear it for the first time again, so whichever way you watch first will
+      shape the second. In a group, the fairest test would give some people the versions alone and others in a row, and compare.
+    </p>
+  </section>
+
+  <section class="text">
+    <h2>The original film</h2>
+    <p>The four versions as I first made them, in a fixed order (Week 5).</p>
+    <video class="film" src="What_Is_It_Made_Of.mp4" controls preload="metadata" playsinline onerror="this.closest('section').hidden = true"></video>
+  </section>
+
+  <section class="text sources">
+    <h2>References</h2>
+    <ul>
+      <li>Chion, M. (1994) <em>Audio-Vision: Sound on Screen</em>. Edited and translated by C. Gorbman. New York: Columbia University Press.</li>
+      <li>Mera, M. (2026) Guest lecture on sound and image, ARTD6231 Ideas in Art and Technology, University of Southampton, Week 5.</li>
+    </ul>
+    <p class="small">All sounds on this page are synthesised in the browser with the Web Audio API, so every version is timed exactly to the animation.</p>
+  </section>
+
+</main>
+<script src="versions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

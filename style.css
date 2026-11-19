@@ -1,0 +1,103 @@
+/* style.css — a plain, light page so the circle and the sound do the work */
+
+:root {
+  --bg: #ffffff;
+  --panel: #f3f4f6;      /* the stage */
+  --ink: #1e2124;
+  --dim: #6b7079;
+  --line: #e2e4e8;
+  --accent: #2c4f86;     /* the blue of the original film title */
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px max(20px, env(safe-area-inset-right, 0px)) 64px max(20px, env(safe-area-inset-left, 0px));
+}
+
+h1 { margin: 0 0 6px; font-size: 40px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+h2 { margin: 0 0 12px; font-size: 20px; font-weight: 600; }
+.lead { margin: 0 0 18px; font-size: 18px; color: var(--accent); }
+.intro p:last-child { max-width: 680px; }
+
+/* stage */
+.stage-wrap { margin: 32px 0 20px; }
+.stage { position: relative; height: 360px; background: var(--panel); border-radius: 4px; }
+canvas { display: block; width: 100%; height: 100%; }
+.stage-label { position: absolute; top: 14px; left: 18px; margin: 0; font-size: 13px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.stage-hint { position: absolute; bottom: 14px; left: 0; right: 0; margin: 0; text-align: center; font-size: 13px; color: var(--dim); }
+
+/* buttons */
+button {
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+button:hover { border-color: var(--ink); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.link { border: none; padding: 4px 0; color: var(--dim); text-decoration: underline; background: none; }
+
+/* asking */
+.ask { margin-top: 16px; }
+.ask-q { margin: 0 0 10px; font-weight: 600; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+
+/* tabs */
+.modes { margin: 24px 0 48px; }
+.tabs { display: flex; gap: 24px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.tabs button { border: none; border-bottom: 2px solid transparent; border-radius: 0; padding: 8px 0; background: none; color: var(--dim); }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.panel-note { color: var(--dim); font-size: 14px; margin: 0 0 14px; }
+
+/* alone: version cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+.card { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; padding: 12px 14px; min-height: 84px; }
+.card-id { font-size: 12px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.card-name { font-size: 14px; }
+.card-answer { font-size: 12px; color: var(--dim); }
+
+/* in a row */
+.row-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.row-progress { margin: 0; padding-left: 22px; font-size: 14px; color: var(--dim); }
+
+/* answers table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; color: var(--dim); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+td.changed { color: var(--accent); font-weight: 600; }
+.pos { color: var(--dim); font-weight: 400; font-size: 12px; }
+
+/* text sections */
+.text { margin: 0 0 40px; max-width: 700px; }
+.version-list { display: grid; gap: 14px; }
+.version p { margin: 0; }
+.version-head { font-weight: 600; }
+.tag { font-size: 11px; font-weight: 500; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 0 5px; margin-left: 4px; vertical-align: 2px; }
+.film { width: 100%; max-width: 700px; border-radius: 4px; background: var(--panel); }
+.sources ul { padding-left: 18px; font-size: 14px; }
+.small { font-size: 13px; color: var(--dim); }
+
+@media (max-width: 600px) {
+  main { padding-top: 32px; }
+  h1 { font-size: 32px; }
+  .stage { height: 300px; }
+  .tabs { gap: 18px; }
+}
